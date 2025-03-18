@@ -1,9 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { HousingLocation } from '../housinglocation';
 
 @Component({
   selector: 'app-housing-location',
   imports: [],
-  template: `<h1>203A</h1>`,
+  template: `
+    <section class="listing">
+      <img
+        class="listing-photo"
+        [src]="housingLocation.photo"
+        alt="Exterior photo of {{ housingLocation.name }}"
+        crossorigin
+      />
+      <h2 class="listing-heading">{{ housingLocation.name }}</h2>
+      <p class="listing-location">
+        {{ housingLocation.city }}, {{ housingLocation.state }}
+      </p>
+    </section>
+  `,
   styles: [
     '.listing {background: var(--accent-color);border-radius: 30px;padding-bottom: 30px;}',
     '.listing-heading {color: var(--primary-color);padding: 10px 20px 0 20px;}',
@@ -14,4 +28,6 @@ import { Component } from '@angular/core';
     'section.listing a::after {content: "203A";margin-left: 5px;}',
   ],
 })
-export class HousingLocationComponent {}
+export class HousingLocationComponent {
+  @Input() housingLocation!: HousingLocation;
+}
