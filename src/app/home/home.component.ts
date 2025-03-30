@@ -33,12 +33,12 @@ export class HomeComponent {
   filteredLocationList: HousingLocation[] = [];
 
   constructor() {
-    this.housingService
-      .getAllHousingLocations()
-      .then((housingLocationList: HousingLocation[]) => {
+    this.housingService.getAllHousingLocations().then((subscription) => {
+      subscription.subscribe((housingLocationList) => {
         this.housingLocationList = housingLocationList;
         this.filteredLocationList = housingLocationList;
       });
+    });
   }
 
   filterResults(text: string) {

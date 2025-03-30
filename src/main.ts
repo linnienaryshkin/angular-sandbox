@@ -11,6 +11,7 @@ import { provideRouter, Routes } from '@angular/router';
 import { HomeComponent } from './app/home/home.component';
 import { DetailsComponent } from './app/details/details.component';
 import { provideZoneChangeDetection } from '@angular/core';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 const routeConfig: Routes = [
   {
@@ -30,5 +31,6 @@ bootstrapApplication(AppComponent, {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideProtractorTestingSupport(),
     provideRouter(routeConfig),
+    provideHttpClient(withFetch()),
   ],
 }).catch((err) => console.error(err));
