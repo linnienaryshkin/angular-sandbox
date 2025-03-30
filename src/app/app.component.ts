@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { TrialComponent } from './trial/trial.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterModule],
+  imports: [RouterModule, TrialComponent],
   template: `
     <main>
       <a [routerLink]="['/']">
@@ -16,6 +17,9 @@ import { RouterModule } from '@angular/router';
           />
         </header>
       </a>
+      <section>
+        <app-trial></app-trial>
+      </section>
       <section class="content">
         <router-outlet></router-outlet>
       </section>
